@@ -1,26 +1,37 @@
+
 import java.util.Scanner;
+
 
  class Main {
      static void main(String[] args) {
 
+         Scanner scanner = new Scanner(System.in);
 
 
-         Scanner sc = new Scanner(System.in);
-
-         System.out.print("Enter age: ");
-         int age = sc.nextInt();
-
-         if(age >= 18 ){
-             System.out.println("An adult doofus");
-
-         } else if (age <= 0) {
-             System.out.println("ain't born");
+         double principal;
+         double rate;
+         int timesCompounded;
+         int years;
+         double amount;
 
 
-         } else{
-             System.out.println("ur a kid");
-         }
+         System.out.print("Enter the principal amount: ");
+         principal = scanner.nextDouble();
+
+         System.out.print("Enter the interest rate (in %): ");
+         rate = scanner.nextDouble() / 100;
+
+         System.out.print("Enter the # of times compounded per year: ");
+         timesCompounded = scanner.nextInt();
+
+         System.out.print("Enter the number of years: ");
+         years = scanner.nextInt();
+
+         amount = principal * Math.pow(1 + rate / timesCompounded, timesCompounded * years);
+
+         System.out.printf("The amount after %d year(s) is SEK%.2f", years, amount);
 
 
+         scanner.close();
     }
 }
