@@ -1,31 +1,38 @@
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
  class Main {
      static void main(String[] args) {
 
-
          Scanner scanner = new Scanner(System.in);
-         String email;
-         String username;
-         String domain;
+
+         double weight;
+         double newWeight;
+         int choice;
 
 
-         System.out.println("Enter your email: ");
+         System.out.println("Weight Conversion Program");
+         System.out.println("1: Convert lbs to kgs");
+         System.out.println("2: Convert kgs to lbs");
 
-         email = scanner.nextLine();
+         System.out.print("Choose an option: ");
+         choice = scanner.nextInt();
 
-         if (email.contains("@")){
-             username = email.substring(0, email.indexOf("@"));
-             domain = email.substring(email.indexOf("@") + 1);
-
-             System.out.println(username);
-             System.out.println(domain);
+         if (choice == 1){
+             System.out.print("Enter the weight in lbs: ");
+             weight = scanner.nextDouble();
+             newWeight = weight * 0.453592;
+             System.out.printf("The new weight in kgs is: %.2f", newWeight);
+         }
+         else if (choice == 2){
+             System.out.print("Enter the weight in kgs: ");
+             weight = scanner.nextDouble();
+             newWeight = weight * 2.20462;
+             System.out.printf("The new weight in lbs is: %.0f", newWeight);
          }
          else {
-             System.out.println("Emails must contain @");
+             System.out.println("That was not a valid choice");
          }
-
-
          scanner.close();
     }
 }
