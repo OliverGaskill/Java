@@ -1,38 +1,41 @@
-import java.sql.SQLOutput;
+import java.util.Random;
 import java.util.Scanner;
 
  class Main {
      static void main(String[] args) {
 
+         Random random = new Random();
          Scanner scanner = new Scanner(System.in);
 
-         double weight;
-         double newWeight;
-         int choice;
+         int guess;
+         int attempts = 0;
+         int min = 1;
+         int max = 100;
+         int randomNumber = random.nextInt(min, max + 1);
+
+         System.out.println("Number guessing game");
+         System.out.printf("Guess a number between %d-%d\n", min, max);
+
+         do{
+             System.out.print("Enter a guess: ");
+             guess = scanner.nextInt();
+             attempts++;
+             
+             if (guess < randomNumber){
+                 System.out.println("TOO LOW!");
+                 
+             } else if (guess > randomNumber) {
+                 System.out.println("TOO HIGH!");
+                 
+             }
+             else {
+                 System.out.println("CORRECT! The correct number was: " + randomNumber);
+                 System.out.println("# of attempts: " + attempts);
+             }
+         }while (guess != randomNumber);
 
 
-         System.out.println("Weight Conversion Program");
-         System.out.println("1: Convert lbs to kgs");
-         System.out.println("2: Convert kgs to lbs");
-
-         System.out.print("Choose an option: ");
-         choice = scanner.nextInt();
-
-         if (choice == 1){
-             System.out.print("Enter the weight in lbs: ");
-             weight = scanner.nextDouble();
-             newWeight = weight * 0.453592;
-             System.out.printf("The new weight in kgs is: %.2f", newWeight);
-         }
-         else if (choice == 2){
-             System.out.print("Enter the weight in kgs: ");
-             weight = scanner.nextDouble();
-             newWeight = weight * 2.20462;
-             System.out.printf("The new weight in lbs is: %.0f", newWeight);
-         }
-         else {
-             System.out.println("That was not a valid choice");
-         }
          scanner.close();
     }
 }
+
