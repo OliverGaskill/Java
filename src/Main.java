@@ -1,41 +1,33 @@
-import java.util.Random;
 import java.util.Scanner;
 
  class Main {
      static void main(String[] args) {
 
-         Random random = new Random();
          Scanner scanner = new Scanner(System.in);
 
-         int guess;
-         int attempts = 0;
-         int min = 1;
-         int max = 100;
-         int randomNumber = random.nextInt(min, max + 1);
+         int rows;
+         int columns;
+         char symbol;
 
-         System.out.println("Number guessing game");
-         System.out.printf("Guess a number between %d-%d\n", min, max);
+         System.out.print("Enter the # of rows: ");
+         rows = scanner.nextInt();
 
-         do{
-             System.out.print("Enter a guess: ");
-             guess = scanner.nextInt();
-             attempts++;
-             
-             if (guess < randomNumber){
-                 System.out.println("TOO LOW!");
-                 
-             } else if (guess > randomNumber) {
-                 System.out.println("TOO HIGH!");
-                 
+         System.out.print("Enter the # of columns: ");
+         columns = scanner.nextInt();
+
+         System.out.print("Enter the symbol to use: ");
+         symbol = scanner.next().charAt(0);
+
+
+         for (int i = 0; i < rows; i++){
+             for (int j = 0; j < columns; j++){
+                 System.out.print(symbol);
              }
-             else {
-                 System.out.println("CORRECT! The correct number was: " + randomNumber);
-                 System.out.println("# of attempts: " + attempts);
-             }
-         }while (guess != randomNumber);
-
+             System.out.println();
+         }
 
          scanner.close();
+
     }
 }
 
